@@ -1,3 +1,7 @@
+# CUSTOM RULES
+database.properties
+
+
 # Compiled class file
 *.class
 
