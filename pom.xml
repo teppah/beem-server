@@ -6,7 +6,11 @@
     <groupId>com.yfy.beem</groupId>
     <artifactId>server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <modules>
+        <module>datamodel</module>
+        <module>web</module>
+    </modules>
+    <packaging>pom</packaging>
 
     <name>server</name>
     <description>Server for the Beem chat client</description>
@@ -23,6 +27,18 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
     </properties>
+
+    <repositories>
+        <!--<repository>-->
+        <!--<id>bintray</id>-->
+        <!--<name>bintray</name>-->
+        <!--<snapshots>-->
+        <!--<enabled>false</enabled>-->
+        <!--</snapshots>-->
+        <!--<url>http://jcenter.bintray.com</url>-->
+        <!--</repository>-->
+    </repositories>
+
 
     <dependencies>
         <dependency>
@@ -47,6 +63,7 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
+            <version>42.2.5</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -58,6 +75,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!--&lt;!&ndash;BouncyGPG&ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>name.neuhalfen.projects.crypto.bouncycastle.openpgp</groupId>-->
+        <!--<artifactId>bouncy-gpg</artifactId>-->
+        <!--<version>2.1.0</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
