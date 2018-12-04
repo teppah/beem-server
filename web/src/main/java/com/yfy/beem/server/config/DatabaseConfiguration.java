@@ -7,16 +7,17 @@ import org.springframework.context.annotation.PropertySource;
 /**
  * <p>The configuration class for Hibernate database access. Instead of using, use database.properties for a more secure configuration that will not be shared on GitHub.</p>
  * // TODO: write javadoc
+ * // TODO: actually externalize hibernate configuration to not include sensitive information
  * */
-@Configuration
-@PropertySource("classpath:database.properties")
+//@Configuration
+//@PropertySource("classpath:database.properties")
 public class DatabaseConfiguration {
-    @Value("${db.url}")
-    private String url;
-    @Value("${db.username}")
-    private String username;
-    @Value("${db.password}")
-    private String password;
+//    @Value("${db.url}")
+//    private String url;
+//    @Value("${db.username}")
+//    private String username;
+//    @Value("${db.password}")
+//    private String password;
 
 //    @Bean
 //    @Primary
