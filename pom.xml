@@ -7,7 +7,6 @@
     <artifactId>server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <modules>
-        <module>datamodel</module>
         <module>web</module>
     </modules>
     <packaging>pom</packaging>
@@ -25,7 +24,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>11</java.version>
+        <java.version>10</java.version>
     </properties>
 
     <repositories>

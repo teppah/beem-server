@@ -11,11 +11,6 @@
 
     <artifactId>web</artifactId>
     <dependencies>
-        <dependency>
-            <groupId>com.yfy.beem</groupId>
-            <artifactId>datamodel</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 
 
