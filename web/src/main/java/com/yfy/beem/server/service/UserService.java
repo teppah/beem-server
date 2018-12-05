@@ -8,12 +8,14 @@ import java.util.List;
 
 /**
  * Abstraction layer for accessing the database
+ * // TODO: write javadoc for each method
  * */
 public interface UserService {
-    List<User> getActiveUsers();
-    boolean addUser(User user);
+    List<User> getUsersList();
+    User addUser(User user);
+    void deleteUserByUUID(long id);
     User retrieveUserByUUID(long id);
     List<User> retrieveUsersMatchingName(String name);
-    
+
 
 }
