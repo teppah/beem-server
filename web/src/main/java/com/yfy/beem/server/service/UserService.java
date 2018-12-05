@@ -11,7 +11,7 @@ import java.util.List;
  * // TODO: write javadoc for each method
  * */
 public interface UserService {
-    List<User> getActiveUsers();
+    List<User> getUsersList();
     User addUser(User user);
     void deleteUserByUUID(long id);
     User retrieveUserByUUID(long id);
