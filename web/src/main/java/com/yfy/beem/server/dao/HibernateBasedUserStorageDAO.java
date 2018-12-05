@@ -1,4 +1,4 @@
-package com.yfy.beem.server.service;
+package com.yfy.beem.server.dao;
 
 import com.yfy.beem.server.datamodel.User;
 import com.yfy.beem.server.respository.UserRepository;
@@ -12,18 +12,18 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 /**
- * Implementation of UserService that uses Hibernate to access a cloud database.
+ * Implementation of UserStorageDAO that uses Hibernate to access a cloud database.
  * TODO: write javadoc
  */
 @Service
 @Slf4j
-public class HibernateBasedUserService implements UserService {
+public class HibernateBasedUserStorageDAO implements UserStorageDAO {
     private UserRepository userRepository;
 
     @Autowired
-    public HibernateBasedUserService(UserRepository userRepository) {
+    public HibernateBasedUserStorageDAO(UserRepository userRepository) {
         this.userRepository = userRepository;
-        log.info("UserService instantiated, userRepository = {}", userRepository);
+        log.info("UserStorageDAO instantiated, userRepository = {}", userRepository);
     }
 
     @Override
