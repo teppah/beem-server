@@ -12,8 +12,8 @@ import java.util.List;
  * */
 public interface UserService {
     List<User> getActiveUsers();
-    boolean addUser(User user);
-    boolean deleteUserByUUID(long id);
+    User addUser(User user);
+    void deleteUserByUUID(long id);
     User retrieveUserByUUID(long id);
     List<User> retrieveUsersMatchingName(String name);
 
