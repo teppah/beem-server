@@ -14,6 +14,6 @@ public interface UserService {
     boolean addUser(User user);
     User retrieveUserByUUID(long id);
     List<User> retrieveUsersMatchingName(String name);
-    
+
 
 }
