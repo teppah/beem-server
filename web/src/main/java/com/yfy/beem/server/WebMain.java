@@ -10,6 +10,5 @@ import org.springframework.context.annotation.ComponentScan;
 public class WebMain {
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = SpringApplication.run(WebMain.class);
-
     }
 }
