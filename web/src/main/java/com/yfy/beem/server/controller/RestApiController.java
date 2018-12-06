@@ -5,10 +5,7 @@ import com.yfy.beem.server.respository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOError;
@@ -37,17 +34,20 @@ public class RestApiController {
         return "test";
     }
 
-    @PostMapping("registerUser")
+    @GetMapping
     public String registerUser (@RequestParam long id,
                                 @RequestParam String name,
                                 @RequestParam String publicKey,
                                 HttpServletRequest request) {
         // remove all superfluous spaces, beginning tag and end tag of RSA public key
-        publicKey.replaceAll("\\n","").replace("-----BEGIN PRIVATE KEY-----", "").replace("-----END PRIVATE KEY-----", "");
+        publicKey = publicKey.replace("-----BEGIN PUBLIC KEY-----", "").replace("-----END PUBLIC KEY-----", "").replaceAll(" ","");
+        log.info("publicKey = {}", publicKey);
 
         try {
             KeyFactory kf = KeyFactory.getInstance("RSA");
-            X509EncodedKeySpec keySpecX509 = new X509EncodedKeySpec(Base64.getDecoder().decode(publicKey));
+            X509EncodedKeySpec keySpecX509 = new X509EncodedKeySpec(Base64
+                    .getDecoder()
+                    .decode(publicKey));
             RSAPublicKey pubKey = (RSAPublicKey) kf.generatePublic(keySpecX509);
             User user = new User(id,name, InetAddress.getByName(request.getRemoteAddr()), pubKey);
             userRepository.save(user);
