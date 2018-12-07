@@ -1,6 +1,8 @@
 # CUSTOM RULES
 database.properties
 
+# linux/arch stuff
+.directory
 
 # Compiled class file
 *.class
