@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <title>Add a user</title>
@@ -21,19 +20,29 @@
     <div class="jumbotron">
         <h1>Add user</h1>
     </div>
-    <form th:action="${__${T(com.yfy.beem.server.util.ApiMappings).REGISTER_USER}__}"
-          action="play2" method="post"
+    <form th:action="@{__${T(com.yfy.beem.server.util.ApiMappings).REGISTER_USER}__}"
+          action="/adduser" method="post"
           class="col-sm-2">
         <div class="form-group">
-            <label for="id" th:for="${__${T(com.yfy.beem.server.util.RequestParamMappings).ID}__}">ID:</label>
-            <input id="id" th:name="${__${T(com.yfy.beem.server.util.RequestParamMappings).ID}__}" type="number"/>
-            <label for="name" th:for="${__${T(com.yfy.beem.server.util.RequestParamMappings).NAME}__}">Name:</label>
-            <input id="name" th:name="${__${T(com.yfy.beem.server.util.RequestParamMappings).NAME}__}" type="text"/>
-            <label for="key" th:for="${__${T(com.yfy.beem.server.util.RequestParamMappings).PUBLIC_KEY}__}">Key:</label>
-            <input id="key" th:name="${__${T(com.yfy.beem.server.util.RequestParamMappings).PUBLIC_KEY}__}" type="text"/>
+            <label for="id">ID:</label>
+            <input id="id" name="id" type="number" class="form-control"/>
+
+            <label for="name" >Name:</label>
+            <input id="name" name="name" type="text" class="form-control"/>
+
+            <label for="key">Key:</label>
+            <input id="key" name="key" type="text" class="form-control"/>
         </div>
         <input type="submit" class="btn btn-primary" value="Submit"/>
     </form>
+    <button class="btn btn-outline-primary" onclick="showValues()">log request params</button>
 </div>
+<script>
+    function showValues() {
+        console.log(document.getElementById('id').value);
+        console.log(document.getElementById('name').value);
+        console.log(document.getElementById('key').value);
+    }
+</script>
 </body>
 </html>
