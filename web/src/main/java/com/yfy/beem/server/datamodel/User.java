@@ -2,11 +2,10 @@ package com.yfy.beem.server.datamodel;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.net.InetAddress;
-import java.security.PublicKey;
 
 /**
  * The base user representation for the server module of the Beem chat client.
@@ -16,13 +15,14 @@ import java.security.PublicKey;
 @Table(name = "users")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private final long id;
+    private long id;
     private String name;
-    private final InetAddress ipAddress;
-    private final PublicKey publicKey;
+    private String ipAddress;
+    private String publicKey;
 
 }

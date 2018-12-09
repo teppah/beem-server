@@ -1,4 +1,4 @@
-package com.yfy.beem.server.service;
+package com.yfy.beem.server.dao;
 
 // TODO: write javadoc
 
@@ -10,7 +10,7 @@ import java.util.List;
  * Abstraction layer for accessing the database
  * // TODO: write javadoc for each method
  * */
-public interface UserService {
+public interface UserStorageDao {
     List<User> getUsersList();
     User addUser(User user);
     void deleteUserByUUID(long id);
