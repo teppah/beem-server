@@ -4,6 +4,7 @@ import com.yfy.beem.server.datamodel.User;
 import com.yfy.beem.server.respository.UserRepository;
 import com.yfy.beem.server.util.ApiMappings;
 import com.yfy.beem.server.util.RequestParamMappings;
+import com.yfy.beem.server.util.ViewNames;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +39,7 @@ public class RestApiController {
         User user = new User(id, name, request.getRemoteAddr(), publicKey);
         userRepository.save(user);
         log.info("Successfully saved new user: {}", user);
-        return user.toString();
+        return ViewNames.REDIRECT_LIST_USERS;
     }
 
     @GetMapping(ApiMappings.GET_USERS)
@@ -48,6 +49,7 @@ public class RestApiController {
                 .collect(Collectors.toList());
         User[] userArray = new User[users.size()];
         userArray = users.toArray(userArray);
+        log.info("existing users = {}", users);
         return userArray;
     }
 }
