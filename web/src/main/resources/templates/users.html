@@ -21,9 +21,28 @@
         <h1>All existing users</h1>
     </div>
 
-    <ul class="list-group" th:each="user: ${__${T(com.yfy.beem.server.util.ModelAttributes).USERS}__}" style="list-style-type:circle">
-        <li th:text="${user}">Placeholder</li>
-    </ul>
+    <!--<ul class="list-group" th:each="user: ${__${T(com.yfy.beem.server.util.ModelAttributes).USERS}__}" style="list-style-type:circle">-->
+        <!--<li th:text="${user}">Placeholder</li>-->
+    <!--</ul>-->
+
+    <table class="table col-lg-6">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">UID</th>
+            <th scope="col">Name</th>
+            <th scope="col">IP address</th>
+            <th scope="col">Key</th>
+            <th scope="col">Selected</th>
+        </tr>
+        <tr th:each="user: ${__${T(com.yfy.beem.server.util.ModelAttributes).USERS}__}">
+            <td><span th:text="${user.id}"></span></td>
+            <td><span th:text="${user.name}"></span></td>
+            <td><span th:text="${user.ipAddress}"></span></td>
+            <td><span th:text="${user.publicKey}"></span></td>
+            <td><span>test</span></td>
+        </tr>
+        </thead>
+    </table>
 </div>
 </body>
 </html>
