@@ -10,7 +10,7 @@ import java.util.List;
  * Abstraction layer for accessing the database
  * // TODO: write javadoc for each method
  * */
-public interface UserStorageDAO {
+public interface UserStorageDao {
     List<User> getUsersList();
     User addUser(User user);
     void deleteUserByUUID(long id);

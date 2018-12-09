@@ -12,18 +12,18 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 /**
- * Implementation of UserStorageDAO that uses Hibernate to access a cloud database.
+ * Implementation of UserStorageDao that uses Hibernate to access a cloud database.
  * TODO: write javadoc
  */
 @Service
 @Slf4j
-public class HibernateBasedUserStorageDAO implements UserStorageDAO {
+public class HibernateUserStorageDao implements UserStorageDao {
     private UserRepository userRepository;
 
     @Autowired
-    public HibernateBasedUserStorageDAO(UserRepository userRepository) {
+    public HibernateUserStorageDao(UserRepository userRepository) {
         this.userRepository = userRepository;
-        log.info("UserStorageDAO instantiated, userRepository = {}", userRepository);
+        log.info("UserStorageDao instantiated, userRepository = {}", userRepository);
     }
 
     @Override
