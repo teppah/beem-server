@@ -9,6 +9,7 @@ public class ApiMappings {
     private ApiMappings() {}
 
     // ----- MAPPINGS ------
-    public static final String REGISTER_USER = "register-user";
-    public static final String GET_USERS = "active";
+    public static final String API_PREFIX = "api/";
+    public static final String ADD_USER = API_PREFIX + "add-user";
+    public static final String GET_USERS = API_PREFIX + "users";
 }
