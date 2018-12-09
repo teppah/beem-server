@@ -13,10 +13,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+
+/**
+ * Main controller for the API endpoints.
+ * */
 @RestController
 @Slf4j
 public class RestApiController {
@@ -28,10 +34,11 @@ public class RestApiController {
     }
 
     @PostMapping(ApiMappings.REGISTER_USER)
-    public String registerUser(@RequestParam(RequestParamMappings.ID) long id,
+    public void registerUser(@RequestParam(RequestParamMappings.ID) long id,
                                @RequestParam(RequestParamMappings.NAME) String name,
                                @RequestParam(RequestParamMappings.PUBLIC_KEY) String publicKey,
-                               HttpServletRequest request) {
+                               HttpServletRequest request,
+                               HttpServletResponse response) throws IOException {
         // remove all superfluous spaces, beginning tag and end tag of RSA public key
 //        publicKey = publicKey.replace("-----BEGIN PUBLIC KEY-----", "").replace("-----END PUBLIC KEY-----", "").replaceAll(" ","");
         log.info("httpServletRequest = {}", request);
@@ -39,7 +46,7 @@ public class RestApiController {
         User user = new User(id, name, request.getRemoteAddr(), publicKey);
         userRepository.save(user);
         log.info("Successfully saved new user: {}", user);
-        return ViewNames.REDIRECT_LIST_USERS;
+        response.sendRedirect(ViewNames.LIST_USERS);
     }
 
     @GetMapping(ApiMappings.GET_USERS)
