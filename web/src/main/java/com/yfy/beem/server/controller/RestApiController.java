@@ -2,6 +2,7 @@ package com.yfy.beem.server.controller;
 
 import com.yfy.beem.server.datamodel.User;
 import com.yfy.beem.server.respository.UserRepository;
+import com.yfy.beem.server.util.RequestMappings;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOError;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.nio.charset.Charset;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
 import java.security.interfaces.RSAPublicKey;
@@ -34,7 +36,7 @@ public class RestApiController {
         return "test";
     }
 
-    @GetMapping
+    @GetMapping(path = RequestMappings.POST_TEST)
     public String registerUser (@RequestParam long id,
                                 @RequestParam String name,
                                 @RequestParam String publicKey,
@@ -47,7 +49,7 @@ public class RestApiController {
             KeyFactory kf = KeyFactory.getInstance("RSA");
             X509EncodedKeySpec keySpecX509 = new X509EncodedKeySpec(Base64
                     .getDecoder()
-                    .decode(publicKey));
+                    .decode(publicKey.getBytes(Charset.defaultCharset())));
             RSAPublicKey pubKey = (RSAPublicKey) kf.generatePublic(keySpecX509);
             User user = new User(id,name, InetAddress.getByName(request.getRemoteAddr()), pubKey);
             userRepository.save(user);
