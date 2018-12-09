@@ -2,6 +2,7 @@ package com.yfy.beem.server.datamodel;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -14,13 +15,14 @@ import javax.persistence.*;
 @Table(name = "users")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private final long id;
+    private long id;
     private String name;
-    private final String ipAddress;
-    private final String publicKey;
+    private String ipAddress;
+    private String publicKey;
 
 }
