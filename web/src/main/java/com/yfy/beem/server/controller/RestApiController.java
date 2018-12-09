@@ -50,10 +50,22 @@ public class RestApiController {
     }
 
     @GetMapping(ApiMappings.GET_USERS)
-    public User[] getActiveUsers() {
+    public User[] getActiveUsers(@RequestParam(value = RequestParamMappings.ID, required = false) Long id,
+                                 @RequestParam(value = RequestParamMappings.NAME, required = false) String name) {
         List<User> users = StreamSupport
                 .stream(userRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
+
+        // filtering logic
+        // filter by id
+        if (id != null) {
+            users.removeIf(user -> user.getId() != id);
+        }
+        // filter by name
+        if (name != null) {
+            users.removeIf(user -> !user.getName().equalsIgnoreCase(name));
+        }
+
         User[] userArray = new User[users.size()];
         userArray = users.toArray(userArray);
         log.info("existing users = {}", users);
