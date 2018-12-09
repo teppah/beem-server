@@ -4,9 +4,9 @@ package com.yfy.beem.server.util;
 /**
  * Centralized request mapping constants
  * */
-public class RequestMappings {
+public class ApiMappings {
     //private constructor, do not let anybody instantiate this class
-    private RequestMappings() {}
+    private ApiMappings() {}
 
     // ----- MAPPINGS ------
     public static final String REGISTER_USER = "registerUser";

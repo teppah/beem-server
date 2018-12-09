@@ -2,7 +2,7 @@ package com.yfy.beem.server.controller;
 
 import com.yfy.beem.server.datamodel.User;
 import com.yfy.beem.server.respository.UserRepository;
-import com.yfy.beem.server.util.RequestMappings;
+import com.yfy.beem.server.util.ApiMappings;
 import com.yfy.beem.server.util.RequestParamMappings;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class RestApiController {
         this.userRepository = userRepository;
     }
 
-    @PostMapping(RequestMappings.REGISTER_USER)
+    @PostMapping(ApiMappings.REGISTER_USER)
     public String registerUser(@RequestParam(RequestParamMappings.ID) long id,
                                @RequestParam(RequestParamMappings.NAME) String name,
                                @RequestParam(RequestParamMappings.PUBLIC_KEY) String publicKey,
@@ -41,7 +41,7 @@ public class RestApiController {
         return user.toString();
     }
 
-    @GetMapping(RequestMappings.GET_USERS)
+    @GetMapping(ApiMappings.GET_USERS)
     public User[] getActiveUsers() {
         List<User> users = StreamSupport
                 .stream(userRepository.findAll().spliterator(), false)
