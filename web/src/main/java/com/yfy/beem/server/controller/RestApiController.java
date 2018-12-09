@@ -7,10 +7,7 @@ import com.yfy.beem.server.util.RequestParamMappings;
 import com.yfy.beem.server.util.WebMappings;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +19,7 @@ import java.util.stream.StreamSupport;
 
 /**
  * Main controller for the API endpoints.
- * */
+ */
 @RestController
 @Slf4j
 public class RestApiController {
@@ -35,10 +32,10 @@ public class RestApiController {
 
     @PostMapping(ApiMappings.ADD_USER)
     public void registerUser(@RequestParam(RequestParamMappings.ID) long id,
-                               @RequestParam(RequestParamMappings.NAME) String name,
-                               @RequestParam(RequestParamMappings.PUBLIC_KEY) String publicKey,
-                               HttpServletRequest request,
-                               HttpServletResponse response) throws IOException {
+                             @RequestParam(RequestParamMappings.NAME) String name,
+                             @RequestParam(RequestParamMappings.PUBLIC_KEY) String publicKey,
+                             HttpServletRequest request,
+                             HttpServletResponse response) throws IOException {
         // remove all superfluous spaces, beginning tag and end tag of RSA public key
 //        publicKey = publicKey.replace("-----BEGIN PUBLIC KEY-----", "").replace("-----END PUBLIC KEY-----", "").replaceAll(" ","");
         log.info("httpServletRequest = {}", request);
@@ -71,4 +68,21 @@ public class RestApiController {
         log.info("existing users = {}", users);
         return userArray;
     }
+
+    @GetMapping(ApiMappings.DELETE_USER + "/{id}")
+    public void deleteUser(@PathVariable("id") Long id,
+                           HttpServletResponse response) throws IOException {
+        log.info("attempting to delete user with id = {}", id);
+        userRepository.deleteById(id);
+        response.sendRedirect(WebMappings.GET_USERS);
+    }
+
+//    @PostMapping(ApiMappings.DELETE_USER + "/{id}")
+//    public void deleteUser(@PathVariable("{id}") Long id,
+//                           HttpServletResponse response) throws IOException {
+//        log.info("attempting to delete user with id = {}", id);
+//        userRepository.deleteById(id);
+//        response.sendRedirect(WebMappings.GET_USERS);
+//    }
+
 }

@@ -12,4 +12,6 @@ public class ApiMappings {
     public static final String API_PREFIX = "api/";
     public static final String ADD_USER = API_PREFIX + "add-user";
     public static final String GET_USERS = API_PREFIX + "users";
+    // need to fix this later; thymeleaf delete template is the root cause
+    public static final String DELETE_USER = API_PREFIX + "delete-user";
 }
