@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add a user</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container-fluid" align="center">
+    <div class="jumbotron">
+        <h1>Add user</h1>
+    </div>
+    <form th:action="${__${T(com.yfy.beem.server.util.ApiMappings).REGISTER_USER}__}"
+          action="play2" method="post"
+          class="col-sm-2">
+        <div class="form-group">
+            <label for="id" th:for="${__${T(com.yfy.beem.server.util.RequestParamMappings).ID}__}">ID:</label>
+            <input id="id" th:name="${__${T(com.yfy.beem.server.util.RequestParamMappings).ID}__}" type="number"/>
+            <label for="name" th:for="${__${T(com.yfy.beem.server.util.RequestParamMappings).NAME}__}">Name:</label>
+            <input id="name" th:name="${__${T(com.yfy.beem.server.util.RequestParamMappings).NAME}__}" type="text"/>
+            <label for="key" th:for="${__${T(com.yfy.beem.server.util.RequestParamMappings).PUBLIC_KEY}__}">Key:</label>
+            <input id="key" th:name="${__${T(com.yfy.beem.server.util.RequestParamMappings).PUBLIC_KEY}__}" type="text"/>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Submit"/>
+    </form>
+</div>
+</body>
+</html>
