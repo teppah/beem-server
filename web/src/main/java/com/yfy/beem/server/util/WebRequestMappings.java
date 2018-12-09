@@ -9,4 +9,5 @@ public class WebRequestMappings {
 
     // ------ CONSTANTS -----
     public static final String ADD_USER = "adduser";
+    public static final String LIST_USERS = "users";
 }
