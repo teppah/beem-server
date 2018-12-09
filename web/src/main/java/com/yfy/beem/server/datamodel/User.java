@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.net.InetAddress;
-import java.security.PublicKey;
 
 /**
  * The base user representation for the server module of the Beem chat client.
@@ -22,7 +20,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private final long id;
     private String name;
-    private final InetAddress ipAddress;
-    private final PublicKey publicKey;
+    private final String ipAddress;
+    private final String publicKey;
 
 }
