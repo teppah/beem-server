@@ -5,11 +5,11 @@ import com.yfy.beem.server.respository.UserRepository;
 import com.yfy.beem.server.util.RequestMappings;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOError;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.nio.charset.Charset;
@@ -29,14 +29,8 @@ public class RestApiController {
     public RestApiController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
-    @GetMapping("test")
-    public String test() {
-        log.info("userRepository = {}", userRepository);
-        return "test";
-    }
-
-    @GetMapping(path = RequestMappings.POST_TEST)
+    
+    @PostMapping(RequestMappings.POST_TEST)
     public String registerUser (@RequestParam long id,
                                 @RequestParam String name,
                                 @RequestParam String publicKey,
