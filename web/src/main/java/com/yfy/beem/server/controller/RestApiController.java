@@ -3,6 +3,7 @@ package com.yfy.beem.server.controller;
 import com.yfy.beem.server.datamodel.User;
 import com.yfy.beem.server.respository.UserRepository;
 import com.yfy.beem.server.util.RequestMappings;
+import com.yfy.beem.server.util.RequestParamMappings;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +27,9 @@ public class RestApiController {
     }
 
     @PostMapping(RequestMappings.REGISTER_USER)
-    public String registerUser(@RequestParam long id,
-                               @RequestParam String name,
-                               @RequestParam String publicKey,
+    public String registerUser(@RequestParam(RequestParamMappings.ID) long id,
+                               @RequestParam(RequestParamMappings.NAME) String name,
+                               @RequestParam(RequestParamMappings.PUBLIC_KEY) String publicKey,
                                HttpServletRequest request) {
         // remove all superfluous spaces, beginning tag and end tag of RSA public key
 //        publicKey = publicKey.replace("-----BEGIN PUBLIC KEY-----", "").replace("-----END PUBLIC KEY-----", "").replaceAll(" ","");
